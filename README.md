@@ -16,4 +16,4 @@ Andreas Krennmair <ak@synflood.at>
 License
 -------
 
-libmp3lame.js is published under the license and terms as lame.
+libmp3lame.js is published under the license terms as lame.
