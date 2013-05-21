@@ -1,5 +1,5 @@
 EMCC:=emcc
-EMCC_OPTS:=-O1 -s LINKABLE=1
+EMCC_OPTS:=-s LINKABLE=1
 EMCONFIGURE:=emconfigure
 EMMAKE:=emmake
 LAME_URL:="http://downloads.sourceforge.net/project/lame/lame/3.99/lame-3.99.5.tar.gz"
