@@ -1,5 +1,5 @@
 EMCC:=emcc
-EMCC_OPTS:=-O1 -s LINKABLE=1 -s ASM_JS=0
+EMCC_OPTS:=-O1 -s LINKABLE=1 -s ASM_JS=1 -s ALLOW_MEMORY_GROWTH=1 -s EXPORTED_FUNCTIONS="['_get_lame_version', '_lame_init', '_lame_init_params', '_lame_set_mode', '_lame_get_mode', '_lame_set_num_samples', '_lame_get_num_samples', '_lame_set_num_channels', '_lame_get_num_channels','_lame_set_in_samplerate', '_lame_get_in_samplerate', '_lame_set_out_samplerate', '_lame_get_out_samplerate', '_lame_set_brate','_lame_get_brate','_lame_set_VBR','_lame_get_VBR', '_lame_set_VBR_q', '_lame_get_VBR_q', '_lame_set_VBR_mean_bitrate_kbps', '_lame_get_VBR_mean_bitrate_kbps', '_lame_set_VBR_min_bitrate_kbps', '_lame_get_VBR_min_bitrate_kbps', '_lame_set_VBR_max_bitrate_kbps', '_lame_get_VBR_max_bitrate_kbps', '_lame_encode_buffer_ieee_float', '_lame_encode_flush', '_lame_close']"
 EMCONFIGURE:=emconfigure
 EMMAKE:=emmake
 LAME_URL:="http://downloads.sourceforge.net/project/lame/lame/3.99/lame-3.99.5.tar.gz"
@@ -19,6 +19,7 @@ dist/libmp3lame.min.js: dist/libmp3lame.js
 $(LAME): $(LAME).tar.gz
 	$(TAR) xzvf $@.tar.gz && \
 	cd $@ && \
+	sed -i -e '/xmmintrin\.h/d' configure && \
 	$(EMCONFIGURE) ./configure --disable-frontend && \
 	$(EMMAKE) make
 
