@@ -46,6 +46,7 @@ return {
 	get_VBR_max_bitrate_kbps: Module.cwrap('lame_get_VBR_max_bitrate_kbps', 'number', [ 'number' ]),
 
 	encode_buffer_ieee_float: function(handle, channel_l, channel_r) {
+		BUFSIZE = channel_l.length * 4;
 		var outbuf = _malloc(BUFSIZE);
 		var inbuf_l = _malloc(channel_l.length * 4);
 		var inbuf_r = _malloc(channel_r.length * 4);
